@@ -23,10 +23,22 @@ namespace DesafioFundamentos.Models
             //Pega valor do usuário e adciiona na lista
             //Também limpa a tela 
             string placa = Console.ReadLine();
-            veiculos.Add(placa);
-            horarios.Add(DateTime.Now);
-            Console.Clear();
-            Console.WriteLine($"Veiculo com placa {placa} adicionado com sucesso");
+            // Verifica se o veiculo já foi cadastrado para evitar erro ao remover valores iguais da lista
+            if (!veiculos.Contains( placa)){
+
+                veiculos.Add(placa);
+                horarios.Add(DateTime.Now);
+                Console.Clear();
+                Console.WriteLine($"Veiculo com placa {placa} adicionado com sucesso");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("\nPlaca de veiculo já estacionado \nTente novamente");
+                AdicionarVeiculo();
+
+            }
+            
                     
         }
 
